@@ -16,7 +16,7 @@ from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
 from sklearn.model_selection import cross_validate, cross_val_score, cross_val_predict, train_test_split, KFold
 
 def load_dataset():
-  ds = pd.read_csv('Project Datasets\\UNSW-NB15_2.csv').append(pd.read_csv('Project Datasets\\UNSW-NB15_3.csv')).append(pd.read_csv('Project Datasets\\UNSW-NB15_4.csv')).append(pd.read_csv('Project Datasets\\UNSW-NB15_1.csv'))
+  ds = pd.read_csv('UNSW-NB15_2.csv').append(pd.read_csv('UNSW-NB15_3.csv')).append(pd.read_csv('UNSW-NB15_4.csv')).append(pd.read_csv('UNSW-NB15_1.csv'))
   return ds
 
 # def create_preprocessor():
@@ -180,9 +180,7 @@ def semisupervised_results(dsv1):
   labeled_x = labeled_ds.drop(['attack_cat'], axis=1)
   preprocessor = create_preprocessor()
   labeled_x_2 = preprocessor.fit_transform(labeled_x)
-  labeled_x_2 = feature_engineering(labeled_x_2.dropna().to_numpy(), y, 0.6)
-
-
+  
   x_train, x_test, y_train, y_test = train_test_split(labeled_x, y, test_size=0.2, random_state=100, shuffle=True)
   
   # The lines below trains the models for the challenge and stores them
