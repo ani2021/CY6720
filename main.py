@@ -100,7 +100,7 @@ def semisupervised_results(dsv1):
   labeled_ds = dsv1[:10000]
   labeled_ds.iloc[:,-2] = LabelEncoder().fit_transform(labeled_ds.iloc[:,-2]).astype('float64')
   corr = labeled_ds.corr()
-  # show_heat_map(corr)
+  show_heat_map(corr)
   y = LabelEncoder().fit_transform(labeled_ds['attack_cat'])
   unlabeled_x = transform_features(unlabeled_x.drop(['attack_cat', 'ct_ftp_cmd', 'ct_flw_http_mthd', 'is_ftp_login'], axis=1))
   labeled_x = transform_features(labeled_ds.drop(['attack_cat', 'ct_ftp_cmd', 'ct_flw_http_mthd', 'is_ftp_login'], axis=1))
